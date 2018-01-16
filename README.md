@@ -1,6 +1,12 @@
 # EFX
 
-An effectful state management system for React applications, designed for simplicity, testability and type-safety. Inspired by redux and reader monads.
+[![CircleCI](https://circleci.com/gh/sleexyz/efx.svg?style=svg)](https://circleci.com/gh/sleexyz/efx)
+[![npm version](https://img.shields.io/npm/v/efx.svg?style=flat-square)](https://www.npmjs.com/package/efx)
+
+
+An effectful state management system for React applications, designed for simplicity, testability and type-safety.
+
+Inspired by redux and reader monads.
 
 **Table of Contents**
 
@@ -53,6 +59,8 @@ export function connect<CP: {}, OP: {}>(
   return EFX.connect(component, mapStateToProps, defaultProps);
 }
 ```
+
+You can find an example `./efx.js` in production [here](https://github.com/sleexyz/gallium/blob/master/gallium-live/src/efx.js).
 
 ## Actions
 
