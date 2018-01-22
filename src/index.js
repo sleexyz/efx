@@ -2,6 +2,10 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
+export class EFX<S: {}> {
+  Store: Class<Store<S>>;
+}
+
 export class Store<S: {}> {
   +state: S;
   subscriptions: Array<?(S) => void> = [];
