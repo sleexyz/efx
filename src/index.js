@@ -4,7 +4,11 @@ import * as PropTypes from "prop-types";
 
 export class EFX<S: {}> {
   Store: Class<Store<S>> = Store;
+  Provider: Class<Provider<S>> = Provider;
+  makeAction: <A, B>(Action<A, B, S>) => (Action<A, B, S>) = makeAction;
 }
+
+export type Action<A, B, S = *> = A => Store<S> => B;
 
 export class Store<S: {}> {
   +state: S;
