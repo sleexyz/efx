@@ -1,5 +1,5 @@
 // @flow
-import { EFX, type Action } from "../";
+import { EFX, type Store } from "../";
 
 // type-level test:
 // application state type variable should be preserved after functor application
@@ -8,7 +8,7 @@ import { EFX, type Action } from "../";
 
   {
     // ok
-    const store = new efx.Store({
+    const store: efx.Store = new efx.Store({
       foo: 1
     });
   }
@@ -22,42 +22,20 @@ import { EFX, type Action } from "../";
   }
 }
 
-// type-level test:
-// action store access is statically checked
 () => {
   const efx: EFX<{ foo: number }> = new EFX();
 
   {
-    const action = efx.makeAction(() => store => {
-      // ok
-      return store.state.foo;
+    // ok
+    const action = new (efx.Action())(() => store => {
+      store.state.foo;
     });
   }
 
   {
-    const action = efx.makeAction(() => store => {
+    const action = new (efx.Action())(() => store => {
       // $ExpectError
-      return store.state.boo;
-    });
-  }
-}
-
-// type-level test:
-// action output is statically checked
-() => {
-  const efx: EFX<{ foo: number }> = new EFX();
-
-  {
-    const action: Action<void, number> = efx.makeAction(() => store => {
-      // ok
-      return store.state.foo;
-    });
-  }
-
-  {
-    // $ExpectError
-    const action: Action<void, string> = efx.makeAction(() => store => {
-      return store.state.foo;
+      store.state.bar;
     });
   }
 }
