@@ -1,5 +1,5 @@
 // @flow
-import * as EFX from "../";
+import { EFX } from "../";
 
 type AppState = {
   foo: number
@@ -8,7 +8,7 @@ type AppState = {
 // type-level test:
 // application state type variable should be preserved after functor application
 () => {
-  const efx: EFX.EFX<AppState> = new EFX.EFX();
+  const efx: EFX<AppState> = new EFX();
 
   {
     // ok
@@ -17,11 +17,12 @@ type AppState = {
     });
   }
 
-
   {
     // $ExpectError
     const store = new efx.Store({
       foo: "hello"
     });
   }
-}
+};
+
+test("ignore");
