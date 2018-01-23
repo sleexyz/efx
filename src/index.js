@@ -3,7 +3,7 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 export class EFX<S: {}> {
-  Store: Class<Store<S>>;
+  Store: Class<Store<S>> = Store;
 }
 
 export class Store<S: {}> {
