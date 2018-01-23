@@ -6,7 +6,7 @@ export class EFX<S: {}> {
   Store: Class<Store<S>> = Store;
   Provider: Class<Provider<S>> = Provider;
 
-  Action: <A, B>() => Class<Action<Store<S>, A, B>>;
+  Action: $Call<<A, B>() => Class<Action<Store<S>, A, B>>, void>;
 
 }
 

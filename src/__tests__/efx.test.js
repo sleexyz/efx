@@ -27,13 +27,13 @@ import { EFX, type Store } from "../";
 
   {
     // ok
-    const action = new (efx.Action())(() => store => {
+    const action = new efx.Action(() => store => {
       store.state.foo;
     });
   }
 
   {
-    const action = new (efx.Action())(() => store => {
+    const action = new efx.Action(() => store => {
       // $ExpectError
       store.state.bar;
     });
